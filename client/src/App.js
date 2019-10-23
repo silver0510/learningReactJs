@@ -1,31 +1,42 @@
 import React, { Component } from 'react';
-
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
 import './App.css';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
-class App extends Component {
-  render() {
-    const Index = () => <h2>Home</h2>;
-    const About = () => <h2>About</h2>;
+const Index = () => <h2>Home</h2>;
+const Products = () => <h2>Products</h2>;
+
+function App() {
       return (
         <Router>
           <div className="App">
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-            </ul>
-          </nav>
+            <Navbar color="light" light expand="md">
+              <NavbarBrand href="/">reactstrap</NavbarBrand>
+                <Nav className="ml-auto" navbar>
+                  <NavItem>
+                    <NavLink href="/">Home</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="/about">Products</NavLink>
+                  </NavItem>
+                </Nav>
+            </Navbar>
             <Route path="/" exact component = {Index} />
-            <Route path="/about/" component = {About} />
+            <Route path="/about/" component = {Products} />
           </div>
         </Router>  
       ); 
   }
-}
 
 export default App;
